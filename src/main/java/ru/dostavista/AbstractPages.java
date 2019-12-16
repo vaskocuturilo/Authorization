@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import ru.dostavista.base.DriverHolder;
 
 /**
- * The class Abstract Page.
+ * The class Abstract AbstractPages.
  */
-public abstract class Page {
+public abstract class AbstractPages {
 
     /**
      * Method navigateWebBrowser.
