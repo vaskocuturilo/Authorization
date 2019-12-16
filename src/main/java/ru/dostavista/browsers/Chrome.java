@@ -1,5 +1,6 @@
 package ru.dostavista.browsers;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,16 +19,15 @@ public class Chrome implements WebDriverProvider {
     /**
      * The constant LOG.
      */
-    private static final  Logger LOG = Logger.getLogger(Chrome.class.getName());
+    private static final Logger LOG = Logger.getLogger(Chrome.class.getName());
 
     /**
      * The method createDriver.
      */
     @Override
     public WebDriver createDriver(final DesiredCapabilities capabilities) {
-
+        WebDriverManager.chromedriver().setup();
         capabilities.setCapability(ChromeOptions.CAPABILITY, getChromeOptions());
-
         try {
             return new ChromeDriver(getChromeOptions());
         } catch (Exception ex) {

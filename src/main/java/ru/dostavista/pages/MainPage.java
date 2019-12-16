@@ -14,7 +14,6 @@ public class MainPage extends AbstractPages {
      * @return the main page
      */
     public MainPage navigateToUrl(final String url) {
-
         navigateWebBrowser().to(url);
         return this;
     }
