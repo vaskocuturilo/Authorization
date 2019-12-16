@@ -17,8 +17,8 @@ public class BaseWeb {
      */
     @BeforeTest
     public void beforeTest() {
-        Chrome chrome = new Chrome();
-        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+        final Chrome chrome = new Chrome();
+        final DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
         DriverHolder.setDriverThread(chrome.createDriver(desiredCapabilities));
     }
 
