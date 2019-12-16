@@ -31,7 +31,8 @@
 
 ```gradle allure:serve```
 
-**List of technologies**: Java 8, Maven, Selenide, TestNG, Rest-assured, Jetty, WireMock, H2, PageObject.
+**List of technologies**: Java 8, Gradle, Selenium, TestNG, Rest-assured, WireMock, PageObject.
+
 **Note**: You should have installed Chrome browser, Gradle.
 
 ![]()
