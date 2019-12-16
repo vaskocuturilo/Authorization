@@ -21,8 +21,6 @@
 
 - [x] ability to run tests for different environments(urls) by configuring/by command-line.
 
-```mvn gradle test -Penv=prod``` 
-
 ### Generate Allure report 
 
 ```gradle allure:report```
