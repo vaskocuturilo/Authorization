@@ -9,9 +9,9 @@ public class AuthorizationTest extends BaseWeb {
 
     @Test
     @Story("This is automation script for check that user can authorization with valid credential.")
-    public void testAuthorizationOnMainPage(){
+    public void testAuthorizationOnMainPage() {
         new MainPage()
                 .navigateToUrl("url")
-                .checkTitlePage("title");
+                .checkTitlePage();
     }
 }

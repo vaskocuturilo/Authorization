@@ -4,6 +4,10 @@ version '1.0-SNAPSHOT'
 apply plugin: 'io.qameta.allure'
 apply plugin: 'java'
 
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+javadoc.options.encoding = 'UTF-8'
+
 allure {
     autoconfigure = true
     version = '2.7.0'

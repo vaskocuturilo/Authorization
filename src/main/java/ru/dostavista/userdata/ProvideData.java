@@ -3,7 +3,6 @@ package ru.dostavista.userdata;
 import org.testng.annotations.DataProvider;
 import ru.dostavista.model.User;
 
-
 /**
  * The class Provide data.
  */

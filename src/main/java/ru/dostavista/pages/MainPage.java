@@ -1,14 +1,20 @@
 package ru.dostavista.pages;
 
-import org.testng.Assert;
 import ru.dostavista.AbstractPages;
+import ru.dostavista.base.DriverHolder;
 
+import static org.testng.Assert.assertTrue;
 import static ru.dostavista.utils.PropertiesReader.loadPropertyName;
 
 /**
  * The class MainPage.
  */
 public class MainPage extends AbstractPages {
+
+    /**
+     * The constant TITLE.
+     */
+    private static final String TITLE = "Курьерская служба доставки по Москве и Московской области";
 
     /**
      * Method navigateToUrl.
@@ -24,14 +30,11 @@ public class MainPage extends AbstractPages {
     /**
      * Method Check title page current convert page.
      *
-     * @param titleName the title name.
      * @return the current convert page.
      */
-    public MainPage checkTitlePage(final String titleName) {
-        Assert.assertEquals(getWindowTitle(), loadPropertyName(titleName));
+    public MainPage checkTitlePage() {
+        assertTrue(DriverHolder.getDriverThread().getTitle().contains(TITLE));
 
         return this;
     }
-
-
 }
