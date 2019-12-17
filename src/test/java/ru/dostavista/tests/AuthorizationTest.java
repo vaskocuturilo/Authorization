@@ -12,6 +12,7 @@ public class AuthorizationTest extends BaseWeb {
     public void testAuthorizationOnMainPage() {
         new MainPage()
                 .navigateToUrl("url")
-                .checkTitlePage();
+                .checkTitlePage()
+                .openLoginForm();
     }
 }

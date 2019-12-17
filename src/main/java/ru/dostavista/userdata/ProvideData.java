@@ -1,7 +1,7 @@
 package ru.dostavista.userdata;
 
 import org.testng.annotations.DataProvider;
-import ru.dostavista.model.User;
+import ru.dostavista.model.Account;
 
 /**
  * The class Provide data.
@@ -16,9 +16,9 @@ public class ProvideData {
     @DataProvider(name = "invalidCredential")
     public Object[][] invalidCredential() {
         return new Object[][]{
-                new Object[]{new User("test1", "test1")},
-                new Object[]{new User("test2", "test2")},
-                new Object[]{new User("test2", "test2")}};
+                new Object[]{new Account("test1", "test1")},
+                new Object[]{new Account("test2", "test2")},
+                new Object[]{new Account("test2", "test2")}};
     }
 
     /**
@@ -29,7 +29,7 @@ public class ProvideData {
     @DataProvider(name = "validCredential")
     public Object[][] validCredential() {
         return new Object[][]{
-                new Object[]{new User("admin", "admin")}};
+                new Object[]{new Account("admin", "admin")}};
     }
 
 }
