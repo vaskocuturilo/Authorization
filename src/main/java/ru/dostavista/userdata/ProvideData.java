@@ -29,7 +29,7 @@ public class ProvideData {
     @DataProvider(name = "validCredential")
     public Object[][] validCredential() {
         return new Object[][]{
-                new Object[]{new Account("admin", "admin")}};
+                new Object[]{new Account("99999999", "admin")}};
     }
 
 }

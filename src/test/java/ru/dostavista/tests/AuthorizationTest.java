@@ -3,16 +3,22 @@ package ru.dostavista.tests;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import ru.dostavista.base.BaseWeb;
+import ru.dostavista.model.Account;
 import ru.dostavista.pages.MainPage;
+import ru.dostavista.pages.UserType;
+import ru.dostavista.userdata.ProvideData;
 
 public class AuthorizationTest extends BaseWeb {
 
-    @Test
+    @Test(dataProvider = "validCredential", dataProviderClass = ProvideData.class)
     @Story("This is automation script for check that user can authorization with valid credential.")
-    public void testAuthorizationOnMainPage() {
+    public void testAuthorizationOnMainPage(Account account) {
         new MainPage()
                 .navigateToUrl("url")
                 .checkTitlePage()
-                .openLoginForm();
+                .openLoginForm()
+                .selectTypeAction(UserType.AUTHORIZATION)
+                .enterCredential(account)
+                .checkErrorMessage();
     }
 }

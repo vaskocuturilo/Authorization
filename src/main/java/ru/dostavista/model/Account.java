@@ -6,24 +6,24 @@ package ru.dostavista.model;
 public class Account {
 
     /**
-     * The private value firstName.
+     * The private value phoneNumber.
      */
-    private String firstName;
+    private String phoneNumber;
 
     /**
-     * The private value lastName.
+     * The private value password.
      */
-    private String lastName;
+    private String password;
 
     /**
      * Constructor Account.
      *
-     * @param firstName this is user firstName.
-     * @param lastName  this is  user lastName.
+     * @param firstName this is user phoneNumber.
+     * @param lastName  this is  user password.
      */
     public Account(final String firstName, final String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.phoneNumber = firstName;
+        this.password = lastName;
     }
 
     /**
@@ -31,8 +31,8 @@ public class Account {
      *
      * @return the first name
      */
-    public String getFirstName() {
-        return firstName;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     /**
@@ -40,7 +40,7 @@ public class Account {
      *
      * @return the last name
      */
-    public String getLastName() {
-        return lastName;
+    public String getPassword() {
+        return password;
     }
 }
