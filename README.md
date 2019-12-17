@@ -1,7 +1,7 @@
 ## Test scenario:
-- 
-- 
--  
+- Perform authenticate with valid data.
+- Perform authenticate with invalid data.
+- Perform registration with valid data.  
     
 ## Requirements:
 - Use any *object-oriented language* (Java or Kotlin).
