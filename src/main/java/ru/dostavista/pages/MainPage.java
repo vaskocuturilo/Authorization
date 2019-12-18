@@ -46,14 +46,14 @@ public class MainPage extends AbstractPages {
     private static final By ERROR_MESSAGE = By.cssSelector("span[class*='error-item']");
 
     /**
-     * The constant FIRST_NAME.
+     * The constant QUESTION.
      */
-    private static final By FIRST_NAME = By.cssSelector("div[class='reg-person-form__row'] input[name='name']");
+    private static final By QUESTION = By.cssSelector("form[class='reg-person-form'] p");
 
     /**
-     * The constant REGISTER.
+     * The constant FAST_QUESTION.
      */
-    private static final By REGISTER = By.cssSelector("div[class='reg-person-form__row'] button[type='submit'");
+    private static final String FAST_QUESTION = "Вопрос срочный?";
 
     /**
      * The constant ERROR_TEXT.
@@ -103,7 +103,6 @@ public class MainPage extends AbstractPages {
         return this;
     }
 
-
     /**
      * The method selectTypeAction.
      *
@@ -116,7 +115,6 @@ public class MainPage extends AbstractPages {
 
         return this;
     }
-
 
     /**
      * The method enterCredential.
@@ -135,7 +133,6 @@ public class MainPage extends AbstractPages {
         return this;
     }
 
-
     /**
      * The method checkErrorMessage.
      *
@@ -148,19 +145,15 @@ public class MainPage extends AbstractPages {
         return this;
     }
 
-
     /**
-     * The method enterRegisterData.
+     * The method checkRegisterPage.
      *
-     * @param userData the user data.
-     * @return the main page.
+     * @return the register page.
      */
-    public MainPage enterRegisterData(final UserData userData) {
+    public RegisterPage checkRegisterPage() {
         final WaitCondition waitCondition = new WaitCondition();
-        waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).clear();
-        waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).sendKeys(userData.getFirstName());
-        waitCondition.waitForVisibilityOfElementLocatedBy(REGISTER).click();
+        assertTrue(waitCondition.waitForVisibilityOfElementLocatedBy(QUESTION).getText().contains(FAST_QUESTION));
 
-        return this;
+        return new RegisterPage();
     }
 }

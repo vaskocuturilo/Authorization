@@ -42,6 +42,8 @@ public class AuthorizationTest extends BaseWeb {
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserType.REGISTRATION)
-                .enterRegisterData(userData);
+                .checkRegisterPage()
+                .enterRegisterData(userData)
+                .checkErrorMessage();
     }
 }
