@@ -41,7 +41,7 @@ public class ProvideData {
     @DataProvider(name = "validDataForRegister")
     public Object[][] validDataForRegister() {
         return new Object[][]{
-                new Object[]{new UserData("TestUser", "1111111","9999999","7890")}};
+                new Object[]{new UserData("TestUser", "1111111", "9999999", "7890")}};
     }
 
 

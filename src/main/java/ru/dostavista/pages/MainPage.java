@@ -155,7 +155,7 @@ public class MainPage extends AbstractPages {
      * @param userData the user data.
      * @return the main page.
      */
-    public MainPage enterRegisterData(UserData userData) {
+    public MainPage enterRegisterData(final UserData userData) {
         final WaitCondition waitCondition = new WaitCondition();
         waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).clear();
         waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).sendKeys(userData.getFirstName());
