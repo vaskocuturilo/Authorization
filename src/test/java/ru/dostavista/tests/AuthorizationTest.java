@@ -12,7 +12,18 @@ public class AuthorizationTest extends BaseWeb {
 
     @Test(dataProvider = "validCredential", dataProviderClass = ProvideData.class)
     @Story("This is automation script for check that user can authorization with valid credential.")
-    public void testAuthorizationOnMainPage(Account account) {
+    public void testAuthorizationWithValidData(Account account) {
+        new MainPage()
+                .navigateToUrl("url")
+                .checkTitlePage()
+                .openLoginForm()
+                .selectTypeAction(UserType.AUTHORIZATION)
+                .enterCredential(account);
+    }
+
+    @Test(dataProvider = "invalidCredential", dataProviderClass = ProvideData.class)
+    @Story("This is automation script for check that user can authorization with invalid credential.")
+    public void testAuthorizationWithInvalidData(Account account){
         new MainPage()
                 .navigateToUrl("url")
                 .checkTitlePage()
