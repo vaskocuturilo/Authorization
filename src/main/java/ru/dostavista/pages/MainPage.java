@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import ru.dostavista.AbstractPages;
 import ru.dostavista.base.DriverHolder;
 import ru.dostavista.model.Account;
+import ru.dostavista.model.UserData;
 import ru.dostavista.waiters.WaitCondition;
 
 import static org.testng.Assert.assertTrue;
@@ -43,6 +44,16 @@ public class MainPage extends AbstractPages {
      * The constant ERROR_MESSAGE.
      */
     private static final By ERROR_MESSAGE = By.cssSelector("span[class*='error-item']");
+
+    /**
+     * The constant FIRST_NAME.
+     */
+    private static final By FIRST_NAME = By.cssSelector("div[class='reg-person-form__row'] input[name='name']");
+
+    /**
+     * The constant REGISTER.
+     */
+    private static final By REGISTER = By.cssSelector("div[class='reg-person-form__row'] button[type='submit'");
 
     /**
      * The constant ERROR_TEXT.
@@ -133,6 +144,23 @@ public class MainPage extends AbstractPages {
     public MainPage checkErrorMessage() {
         final WaitCondition waitCondition = new WaitCondition();
         assertTrue(waitCondition.waitForVisibilityOfElementLocatedBy(ERROR_MESSAGE).getText().contains(ERROR_TEXT));
+
+        return this;
+    }
+
+
+    /**
+     * The method enterRegisterData.
+     *
+     * @param userData the user data.
+     * @return the main page.
+     */
+    public MainPage enterRegisterData(UserData userData) {
+        final WaitCondition waitCondition = new WaitCondition();
+        waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).clear();
+        waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).sendKeys(userData.getFirstName());
+        waitCondition.waitForVisibilityOfElementLocatedBy(REGISTER).click();
+
         return this;
     }
 }

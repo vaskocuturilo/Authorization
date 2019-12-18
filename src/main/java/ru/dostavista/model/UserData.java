@@ -6,9 +6,24 @@ package ru.dostavista.model;
  */
 public class UserData {
 
+    /**
+     * The class firstName.
+     */
     private String firstName;
+
+    /**
+     * The class password.
+     */
     private String password;
+
+    /**
+     * The class phoneNumber.
+     */
     private String phoneNumber;
+
+    /**
+     * The class sms.
+     */
     private String sms;
 
     /**
@@ -19,7 +34,7 @@ public class UserData {
      * @param phoneNumber the phone number.
      * @param sms         the sms.
      */
-    public UserData(String firstName, String password, String phoneNumber, String sms) {
+    public UserData(final String firstName, final String password, final String phoneNumber, final String sms) {
         this.firstName = firstName;
         this.password = password;
         this.phoneNumber = phoneNumber;
