@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import ru.dostavista.model.UserData;
 import ru.dostavista.waiters.WaitCondition;
 
-import static org.testng.Assert.assertTrue;
+import static ru.dostavista.waiters.Conditions.shouldHave;
 
 /**
  * The type Register page.
@@ -58,10 +58,10 @@ public class RegisterPage {
         waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).sendKeys(userData.getFirstName());
         waitCondition.waitForVisibilityOfElementLocatedBy(PASSWORD).clear();
         waitCondition.waitForVisibilityOfElementLocatedBy(PASSWORD).sendKeys(userData.getPassword());
-        waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).clear();
-        waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).sendKeys(userData.getPhoneNumber());
         waitCondition.waitForVisibilityOfElementLocatedBy(CODE).clear();
         waitCondition.waitForVisibilityOfElementLocatedBy(CODE).sendKeys(userData.getCheckCode());
+        waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).clear();
+        waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).sendKeys(userData.getPhoneNumber());
         waitCondition.waitForVisibilityOfElementLocatedBy(REGISTER).click();
 
         return this;
@@ -75,10 +75,8 @@ public class RegisterPage {
      */
     public RegisterPage checkErrorMessage() {
         final WaitCondition waitCondition = new WaitCondition();
-        assertTrue(waitCondition.waitForVisibilityOfElementLocatedBy(ERROR_FIELD).getText().contains(TEXT));
+        shouldHave(waitCondition.waitForVisibilityOfElementLocatedBy(ERROR_FIELD), TEXT);
 
         return this;
     }
-
-
 }
