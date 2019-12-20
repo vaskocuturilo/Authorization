@@ -25,6 +25,9 @@ public final class Browser {
             final DesiredCapabilities capabilities = DesiredCapabilities.chrome();
             DriverHolder.setDriverThread(chrome.createDriver(capabilities));
         } else if ("Remote".equalsIgnoreCase(nameBrowser)) {
+            Remote remote = new Remote();
+            final DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+            DriverHolder.setDriverThread(remote.createDriver(capabilities));
         } else {
             throw new IllegalStateException(" Browser " + nameBrowser + " not supported in this tests. ");
         }

@@ -18,7 +18,7 @@ public class BaseWeb {
     @BeforeClass(alwaysRun = true)
     public void beforeTest() {
         if (Environment.isCheckOperationSystem()) {
-            selectBrowser("remote");
+            selectBrowser("Remote");
         } else {
             selectBrowser("Chrome");
         }
