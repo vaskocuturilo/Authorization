@@ -11,7 +11,7 @@ import ru.dostavista.userdata.ProvideData;
 
 public class AuthorizationTest extends BaseWeb {
 
-    @Test(dataProvider = "validDataForRegister", dataProviderClass = ProvideData.class)
+    @Test(dataProvider = "validCredential", dataProviderClass = ProvideData.class)
     @Story("This is automation script for check that user can authorization with valid credential.")
     public void testAuthorizationWithValidData(Account account) {
         new MainPage()
@@ -47,3 +47,4 @@ public class AuthorizationTest extends BaseWeb {
                 .checkErrorMessage();
     }
 }
+

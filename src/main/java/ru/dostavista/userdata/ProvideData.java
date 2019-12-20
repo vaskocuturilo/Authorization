@@ -44,5 +44,16 @@ public class ProvideData {
                 new Object[]{new UserData("TestUser", "Qwerty123456", "9999999999", "7890")}};
     }
 
+    /**
+     * Method Valid credential object [ ] [ ].
+     *
+     * @return the object [ ] [ ]
+     */
+    @DataProvider(name = "dataForApi")
+    public Object[][] dataForApi() {
+        return new Object[][]{
+                new Object[]{new Account("TestUser", "Qwerty123456")}};
+    }
+
 
 }

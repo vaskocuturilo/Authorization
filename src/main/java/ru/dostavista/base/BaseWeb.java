@@ -1,11 +1,10 @@
 package ru.dostavista.base;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import ru.dostavista.AbstractPages;
 import ru.dostavista.browsers.Chrome;
-
 
 /**
  * The class Base web.
@@ -15,7 +14,7 @@ public class BaseWeb {
     /**
      * Method beforeTest.
      */
-    @BeforeTest
+    @BeforeClass(alwaysRun = true)
     public void beforeTest() {
         final Chrome chrome = new Chrome();
         final DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -25,7 +24,7 @@ public class BaseWeb {
     /**
      * Method afterTest.
      */
-    @AfterTest
+    @AfterClass(alwaysRun = true)
     public void afterTest() {
         AbstractPages.closeWebBrowser();
     }
