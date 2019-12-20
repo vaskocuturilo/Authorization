@@ -61,7 +61,7 @@ public class RegisterPage {
         waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).clear();
         waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).sendKeys(userData.getPhoneNumber());
         waitCondition.waitForVisibilityOfElementLocatedBy(CODE).clear();
-        waitCondition.waitForVisibilityOfElementLocatedBy(CODE).sendKeys(userData.getCode());
+        waitCondition.waitForVisibilityOfElementLocatedBy(CODE).sendKeys(userData.getCheckCode());
         waitCondition.waitForVisibilityOfElementLocatedBy(REGISTER).click();
 
         return this;

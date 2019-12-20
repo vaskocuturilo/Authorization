@@ -22,9 +22,9 @@ public class UserData {
     private String phoneNumber;
 
     /**
-     * The class Code.
+     * The class checkCode.
      */
-    private String Code;
+    private String checkCode;
 
     /**
      * The constructor.
@@ -32,13 +32,13 @@ public class UserData {
      * @param firstName   the first name.
      * @param password    the password.
      * @param phoneNumber the phone number.
-     * @param smsCode         the Code.
+     * @param smsCode         the checkCode.
      */
     public UserData(final String firstName, final String password, final String phoneNumber, final String smsCode) {
         this.firstName = firstName;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.Code = smsCode;
+        this.checkCode = smsCode;
     }
 
     /**
@@ -69,11 +69,11 @@ public class UserData {
     }
 
     /**
-     * Gets Code.
+     * Gets checkCode.
      *
-     * @return the Code
+     * @return the checkCode
      */
-    public String getCode() {
-        return Code;
+    public String getCheckCode() {
+        return checkCode;
     }
 }

@@ -17,9 +17,9 @@ public class ProvideData {
     @DataProvider(name = "invalidCredential")
     public Object[][] invalidCredential() {
         return new Object[][]{
-                new Object[]{new Account("test1", "test1")},
-                new Object[]{new Account("test2", "test2")},
-                new Object[]{new Account("test2", "test2")}};
+                new Object[]{new Account("999999999", "test1")},
+                new Object[]{new Account("834986348", "toost2")},
+                new Object[]{new Account("346346346", "taktak3")}};
     }
 
     /**
@@ -42,6 +42,17 @@ public class ProvideData {
     public Object[][] validDataForRegister() {
         return new Object[][]{
                 new Object[]{new UserData("TestUser", "Qwerty123456", "9999999999", "7890")}};
+    }
+
+    /**
+     * Method Valid credential object [ ] [ ].
+     *
+     * @return the object [ ] [ ]
+     */
+    @DataProvider(name = "dataForApi")
+    public Object[][] dataForApi() {
+        return new Object[][]{
+                new Object[]{new Account("TestUser", "Qwerty123456")}};
     }
 
 
