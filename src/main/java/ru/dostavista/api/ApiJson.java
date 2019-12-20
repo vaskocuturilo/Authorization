@@ -57,7 +57,7 @@ public final class ApiJson {
      * @param password this is password.
      * @return jsonObj to string.
      */
-    public static String putJson(String phone, String password) {
+    public static String putJson(final String phone, final String password) {
         final JSONObject jsonObj = new JSONObject();
 
         jsonObj.put("phone", phone);

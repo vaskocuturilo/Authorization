@@ -1,10 +1,11 @@
 package ru.dostavista.base;
 
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import ru.dostavista.AbstractPages;
-import ru.dostavista.browsers.Chrome;
+import ru.dostavista.environment.Environment;
+
+import static ru.dostavista.browsers.Browser.selectBrowser;
 
 /**
  * The class Base web.
@@ -16,9 +17,11 @@ public class BaseWeb {
      */
     @BeforeClass(alwaysRun = true)
     public void beforeTest() {
-        final Chrome chrome = new Chrome();
-        final DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        DriverHolder.setDriverThread(chrome.createDriver(capabilities));
+        if (Environment.isCheckOperationSystem()) {
+            selectBrowser("remote");
+        } else {
+            selectBrowser("Chrome");
+        }
     }
 
     /**

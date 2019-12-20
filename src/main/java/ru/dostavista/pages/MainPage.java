@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import ru.dostavista.AbstractPages;
 import ru.dostavista.base.DriverHolder;
 import ru.dostavista.model.Account;
-import ru.dostavista.model.UserData;
 import ru.dostavista.waiters.WaitCondition;
 
 import static org.testng.Assert.assertTrue;

@@ -11,9 +11,8 @@ public interface WebDriverProvider {
     /**
      * Create new {@link WebDriver} instance.
      *
-     * @param capabilities set of desired capabilities as suggested by Selenium framework;
-     *                     method implementation is recommended to pass this variable to {@link WebDriver},
-     *                     probably modifying it according to specific needs.
+     * @param capabilities set of desired capabilities
+     *                     as suggested by Selenium framework;
      * @return new {@link WebDriver} instance.
      */
     WebDriver createDriver(DesiredCapabilities capabilities);

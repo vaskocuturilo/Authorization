@@ -1,10 +1,8 @@
 package ru.dostavista.api;
 
-import io.restassured.response.Response;
-import net.minidev.json.JSONObject;
-
-import static io.restassured.RestAssured.given;
-
+/**
+ * The class Get request.
+ */
 public class GetRequest {
 
 

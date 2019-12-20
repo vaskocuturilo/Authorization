@@ -1,10 +1,16 @@
 package ru.dostavista.environment;
 
-
 /**
  * The class Environment.
  */
-public class Environment {
+public final class Environment {
+
+
+    /**
+     * The private constructor.
+     */
+    private Environment() {
+    }
 
     /**
      * Method isCheckOperatingSystem.
@@ -13,8 +19,8 @@ public class Environment {
      *
      * @return the boolean.
      */
-    public boolean isCheckOperationSystem() {
-        String operationSystem = System.getProperty("os.name");
+    public static boolean isCheckOperationSystem() {
+        final String operationSystem = System.getProperty("os.name");
         return (operationSystem.contains("nix") || operationSystem.contains("nux"));
     }
 }
