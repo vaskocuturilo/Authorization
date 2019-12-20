@@ -5,7 +5,6 @@ package ru.dostavista.environment;
  */
 public final class Environment {
 
-
     /**
      * The private constructor.
      */

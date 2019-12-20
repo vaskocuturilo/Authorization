@@ -43,8 +43,21 @@ public class AuthorizationTest extends BaseWeb {
                 .openLoginForm()
                 .selectTypeAction(UserType.REGISTRATION)
                 .checkRegisterPage()
+                .enterRegisterData(userData);
+    }
+
+    @Test(dataProvider = "validDataForRegister", dataProviderClass = ProvideData.class)
+    @Story("This is automation script for check that user can't register with invalid data.")
+    public void testRegistrationWithInvalidData(UserData userData) {
+        new MainPage()
+                .navigateToUrl("url")
+                .checkTitlePage()
+                .openLoginForm()
+                .selectTypeAction(UserType.REGISTRATION)
+                .checkRegisterPage()
                 .enterRegisterData(userData)
                 .checkErrorMessage();
     }
+
 }
 
