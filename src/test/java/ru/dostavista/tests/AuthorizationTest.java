@@ -34,28 +34,28 @@ public class AuthorizationTest extends BaseWeb {
                 .checkErrorMessage();
     }
 
-    @Test(dataProvider = "validDataForRegister", dataProviderClass = ProvideData.class)
+    @Test
     @Story("This is automation script for check that user can register with valid data.")
-    public void testRegistrationWithValidData(UserData userData) {
+    public void testRegistrationWithValidData() {
         new MainPage()
                 .navigateToUrl("url")
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserType.REGISTRATION)
                 .checkRegisterPage()
-                .enterRegisterData(userData);
+                .enterRegisterData("DataForRegistration");
     }
 
-    @Test(dataProvider = "validDataForRegister", dataProviderClass = ProvideData.class)
+    @Test
     @Story("This is automation script for check that user can't register with invalid data.")
-    public void testRegistrationWithInvalidData(UserData userData) {
+    public void testRegistrationWithInvalidData() {
         new MainPage()
                 .navigateToUrl("url")
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserType.REGISTRATION)
                 .checkRegisterPage()
-                .enterRegisterData(userData)
+                .enterRegisterData("DataForRegistration")
                 .checkErrorMessage();
     }
 

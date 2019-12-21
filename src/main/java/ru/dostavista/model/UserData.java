@@ -1,6 +1,5 @@
 package ru.dostavista.model;
 
-
 /**
  * The class Userdata.
  */

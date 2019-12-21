@@ -2,7 +2,6 @@ package ru.dostavista.userdata;
 
 import org.testng.annotations.DataProvider;
 import ru.dostavista.model.Account;
-import ru.dostavista.model.UserData;
 
 /**
  * The class Provide data.
@@ -31,17 +30,6 @@ public class ProvideData {
     public Object[][] validCredential() {
         return new Object[][]{
                 new Object[]{new Account("99999999", "admin")}};
-    }
-
-    /**
-     * Method Valid credential object [ ] [ ].
-     *
-     * @return the object [ ] [ ]
-     */
-    @DataProvider(name = "validDataForRegister")
-    public Object[][] validDataForRegister() {
-        return new Object[][]{
-                new Object[]{new UserData("TestUser", "Qwerty123456", "9999999999", "7890")}};
     }
 
     /**

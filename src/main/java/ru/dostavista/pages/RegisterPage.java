@@ -1,9 +1,12 @@
 package ru.dostavista.pages;
 
+import com.google.gson.Gson;
 import org.openqa.selenium.By;
 import ru.dostavista.model.UserData;
+import ru.dostavista.utils.PropertiesReader;
 import ru.dostavista.waiters.WaitCondition;
 
+import static java.lang.String.format;
 import static ru.dostavista.waiters.Conditions.shouldHave;
 
 /**
@@ -49,10 +52,11 @@ public class RegisterPage {
     /**
      * The method enterRegisterData.
      *
-     * @param userData the user data.
+     * @param jsonFile this is String data. Need for getJsonData method.
      * @return the main page.
      */
-    public RegisterPage enterRegisterData(final UserData userData) {
+    public RegisterPage enterRegisterData(final String jsonFile) {
+        final UserData userData = getJsonData(jsonFile);
         final WaitCondition waitCondition = new WaitCondition();
         waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).clear();
         waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).sendKeys(userData.getFirstName());
@@ -79,4 +83,18 @@ public class RegisterPage {
 
         return this;
     }
+
+    /**
+     * Method get Json Data.
+     *
+     * @param jsonFileName path to file.
+     * @return new Gson.
+     */
+    private static UserData getJsonData(final String jsonFileName) {
+
+        final String pathToFolder = PropertiesReader.getResourceAsString(format("user/%s.json", jsonFileName));
+
+        return new Gson().fromJson(pathToFolder, UserData.class);
+    }
+
 }
