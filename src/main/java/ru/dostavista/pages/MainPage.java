@@ -1,6 +1,7 @@
 package ru.dostavista.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 import ru.dostavista.AbstractPages;
 import ru.dostavista.base.DriverHolder;
 import ru.dostavista.model.Account;
@@ -38,6 +39,21 @@ public class MainPage extends AbstractPages {
      * The constant SUBMIT.
      */
     private static final By SUBMIT = By.cssSelector("div[class='login-person-form__row'] button[type='submit']");
+
+    /**
+     * The constant PERSONAL_ACCOUNT.
+     */
+    private static final By PERSONAL_ACCOUNT = By.cssSelector("a[class='header-menu__item-btn']");
+
+    /**
+     * The constant USER_NAME.
+     */
+    private static final By USER_NAME = By.cssSelector("i[class*='dv-cabinet-icon--small'");
+
+    /**
+     * The constant LOG_OUT.
+     */
+    private static final By LOG_OUT = By.cssSelector("a[href*='logout']");
 
     /**
      * The constant ERROR_MESSAGE.
@@ -128,6 +144,32 @@ public class MainPage extends AbstractPages {
         waitCondition.waitForVisibilityOfElementLocatedBy(PASSWORD).clear();
         waitCondition.waitForVisibilityOfElementLocatedBy(PASSWORD).sendKeys(account.getPassword());
         waitCondition.waitForVisibilityOfElementLocatedBy(SUBMIT).click();
+
+        return this;
+    }
+
+    /**
+     * The method enterToPersonalAccount.
+     *
+     * @return the main page
+     */
+    public MainPage enterToPersonalAccount() {
+        final WaitCondition waitCondition = new WaitCondition();
+        waitCondition.waitForVisibilityOfElementLocatedBy(PERSONAL_ACCOUNT).click();
+
+        return this;
+    }
+
+    /**
+     * The method clickLogOut.
+     *
+     * @return the main page.
+     */
+    public MainPage clickLogOut() {
+        final WaitCondition waitCondition = new WaitCondition();
+        final Actions builder = new Actions(DriverHolder.getDriverThread());
+        builder.moveToElement(waitCondition.waitForVisibilityOfElementLocatedBy(USER_NAME)).build().perform();
+        waitCondition.waitForVisibilityOfElementLocatedBy(LOG_OUT).click();
 
         return this;
     }

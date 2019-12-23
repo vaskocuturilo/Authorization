@@ -4,7 +4,6 @@ import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import ru.dostavista.base.BaseWeb;
 import ru.dostavista.model.Account;
-import ru.dostavista.model.UserData;
 import ru.dostavista.pages.MainPage;
 import ru.dostavista.pages.UserType;
 import ru.dostavista.userdata.ProvideData;
@@ -19,7 +18,9 @@ public class AuthorizationTest extends BaseWeb {
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserType.AUTHORIZATION)
-                .enterCredential(account);
+                .enterCredential(account)
+                .enterToPersonalAccount()
+                .clickLogOut();
     }
 
     @Test(dataProvider = "invalidCredential", dataProviderClass = ProvideData.class)

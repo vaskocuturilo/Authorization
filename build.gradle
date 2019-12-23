@@ -4,10 +4,6 @@ version '1.0-SNAPSHOT'
 apply plugin: 'io.qameta.allure'
 apply plugin: 'java'
 
-compileJava.options.encoding = 'UTF-8'
-compileTestJava.options.encoding = 'UTF-8'
-javadoc.options.encoding = 'UTF-8'
-
 allure {
     autoconfigure = true
     version = '2.7.0'
@@ -47,8 +43,6 @@ dependencies {
     compile group: 'org.aeonbits.owner', name: 'owner', version: '1.0.10'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.7.1'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.2.RELEASE'
-    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.10'
     testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.8.0-beta2'
 }
 
