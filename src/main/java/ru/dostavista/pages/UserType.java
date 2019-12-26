@@ -1,40 +1,40 @@
 package ru.dostavista.pages;
 
+
 /**
  * The enum UserType.
  */
 public enum UserType {
 
     /**
-     * Authorization user type.
+     * Natural person user type.
      */
-    AUTHORIZATION("div[class*='sign-tabs']"),
+    NATURAL_PERSON("span[class*='-label--active']"),
+    /**
+     * Legal entity user type.
+     */
+    LEGAL_ENTITY("span[class='dostavista-tabs__tab-label']");
 
     /**
-     * Registration user type.
+     * The private value userType.
      */
-    REGISTRATION("button[class='form-toggler']");
+    private String userType;
+
 
     /**
-     * The private value typeOfAction.
+     * The constructor UserType.
+     * @param typeOfUser this is value userType.
      */
-    private String typeOfAction;
-
-    /**
-     * The constructor.
-     *
-     * @param userAction this is userAction.
-     */
-    UserType(final String userAction) {
-        this.typeOfAction = userAction;
+    UserType(final String typeOfUser) {
+        this.userType = typeOfUser;
     }
 
     /**
      * Getter.
      *
-     * @return the type of action
+     * @return the user type
      */
-    public String getTypeOfAction() {
-        return typeOfAction;
+    public String getUserType() {
+        return userType;
     }
 }

@@ -3,36 +3,38 @@ package ru.dostavista.tests;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 import ru.dostavista.base.BaseWeb;
-import ru.dostavista.model.Account;
+import ru.dostavista.model.LegalAccount;
+import ru.dostavista.model.PersonAccount;
 import ru.dostavista.pages.MainPage;
+import ru.dostavista.pages.UserAction;
 import ru.dostavista.pages.UserType;
 import ru.dostavista.userdata.ProvideData;
 
 public class AuthorizationTest extends BaseWeb {
 
-    @Test(dataProvider = "validCredential", dataProviderClass = ProvideData.class)
+    @Test(dataProvider = "validCredentialForPerson", dataProviderClass = ProvideData.class)
     @Story("This is automation script for check that user can authorization with valid credential.")
-    public void testAuthorizationWithValidData(Account account) {
+    public void testAuthorizationWithValidData(PersonAccount account) {
         new MainPage()
                 .navigateToUrl("url")
                 .checkTitlePage()
                 .openLoginForm()
-                .selectTypeAction(UserType.AUTHORIZATION)
-                .enterCredential(account)
+                .selectTypeAction(UserAction.AUTHORIZATION)
+                .enterCredentialForNaturalPersonUser(account)
                 .enterToPersonalAccount()
                 .clickLogOut();
     }
 
-    @Test(dataProvider = "invalidCredential", dataProviderClass = ProvideData.class)
-    @Story("This is automation script for check that user can authorization with invalid credential.")
-    public void testAuthorizationWithInvalidData(Account account) {
+    @Test(dataProvider = "invalidCredentialForPerson", dataProviderClass = ProvideData.class)
+    @Story("This is automation script for check that user can't authorization with invalid credential.")
+    public void testAuthorizationWithInvalidData(PersonAccount account) {
         new MainPage()
                 .navigateToUrl("url")
                 .checkTitlePage()
                 .openLoginForm()
-                .selectTypeAction(UserType.AUTHORIZATION)
-                .enterCredential(account)
-                .checkErrorMessage();
+                .selectTypeAction(UserAction.AUTHORIZATION)
+                .enterCredentialForNaturalPersonUser(account)
+                .checkErrorMessageForPerson();
     }
 
     @Test
@@ -42,7 +44,7 @@ public class AuthorizationTest extends BaseWeb {
                 .navigateToUrl("url")
                 .checkTitlePage()
                 .openLoginForm()
-                .selectTypeAction(UserType.REGISTRATION)
+                .selectTypeAction(UserAction.REGISTRATION)
                 .checkRegisterPage()
                 .enterRegisterData("DataForRegistration");
     }
@@ -54,11 +56,22 @@ public class AuthorizationTest extends BaseWeb {
                 .navigateToUrl("url")
                 .checkTitlePage()
                 .openLoginForm()
-                .selectTypeAction(UserType.REGISTRATION)
+                .selectTypeAction(UserAction.REGISTRATION)
                 .checkRegisterPage()
                 .enterRegisterData("DataForRegistration")
                 .checkErrorMessage();
     }
 
+    @Test(dataProvider = "invalidCredentialForLegal", dataProviderClass = ProvideData.class)
+    @Story("This is automation script for check that user can't authorization with invalid credential.")
+    public void testAuthorizationLegalEntityWithInvalidData(final LegalAccount legalAccount) {
+        new MainPage()
+                .navigateToUrl("url")
+                .checkTitlePage()
+                .openLoginForm()
+                .selectTypeUser(UserType.LEGAL_ENTITY)
+                .enterCredentialForLegalEntityUser(legalAccount)
+                .checkErrorMessageForLegal();
+    }
 }
 

@@ -4,7 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import ru.dostavista.AbstractPages;
 import ru.dostavista.base.DriverHolder;
-import ru.dostavista.model.Account;
+import ru.dostavista.model.LegalAccount;
+import ru.dostavista.model.PersonAccount;
 import ru.dostavista.waiters.WaitCondition;
 
 import static org.testng.Assert.assertTrue;
@@ -31,14 +32,29 @@ public class MainPage extends AbstractPages {
     private static final By PHONE = By.cssSelector("form[class='login-person-form'] input[name='phone']");
 
     /**
-     * The constant PASSWORD.
+     * The constant PERSON_PASSWORD.
      */
-    private static final By PASSWORD = By.cssSelector("form[class='login-person-form'] input[name='password']");
+    private static final By PERSON_PASSWORD = By.cssSelector("form[class='login-person-form'] input[name='password']");
 
     /**
-     * The constant SUBMIT.
+     * The constant EMAIL.
      */
-    private static final By SUBMIT = By.cssSelector("div[class='login-person-form__row'] button[type='submit']");
+    private static final By EMAIL = By.cssSelector("div[class='login-legal-form__row'] input[name='email']");
+
+    /**
+     * The constant LEGAL_PASSWORD.
+     */
+    private static final By LEGAL_PASSWORD = By.cssSelector("div[class='login-legal-form__row'] input[name='password']");
+
+    /**
+     * The constant SUBMIT_PERSON.
+     */
+    private static final By SUBMIT_PERSON = By.cssSelector("div[class='login-person-form__row'] button[type='submit']");
+
+    /**
+     * The constant SUBMIT_LEGAL.
+     */
+    private static final By SUBMIT_LEGAL = By.cssSelector("div[class='login-legal-form__row'] button[type='submit']");
 
     /**
      * The constant PERSONAL_ACCOUNT.
@@ -59,6 +75,16 @@ public class MainPage extends AbstractPages {
      * The constant ERROR_MESSAGE.
      */
     private static final By ERROR_MESSAGE = By.cssSelector("span[class*='error-item']");
+
+    /**
+     * The constant ERROR_LEGAL_MESSAGE.
+     */
+    private static final By ERROR_LEGAL_MESSAGE = By.cssSelector("div[class='login-legal-form__form-error']");
+
+    /**
+     * The constant ERROR_LEGAL_TEXT.
+     */
+    private static final String ERROR_LEGAL_TEXT = "Пользователь с таким логином или паролем не найден";
 
     /**
      * The constant QUESTION.
@@ -121,30 +147,57 @@ public class MainPage extends AbstractPages {
     /**
      * The method selectTypeAction.
      *
-     * @param userType the user type.
+     * @param userAction the user type.
      * @return the main page.
      */
-    public MainPage selectTypeAction(final UserType userType) {
+    public MainPage selectTypeAction(final UserAction userAction) {
         final WaitCondition waitCondition = new WaitCondition();
-        waitCondition.waitForVisibilityOfElementLocatedBy(By.cssSelector(userType.getTypeOfAction())).click();
+        waitCondition.waitForVisibilityOfElementLocatedBy(By.cssSelector(userAction.getTypeOfAction())).click();
 
         return this;
     }
 
+
     /**
-     * The method enterCredential.
+     * The method selectTypeUser.
      *
-     * @param account the account.
+     * @param userType the user type.
      * @return the main page.
      */
-    public MainPage enterCredential(final Account account) {
+    public MainPage selectTypeUser(final UserType userType) {
+        final WaitCondition waitCondition = new WaitCondition();
+        waitCondition.waitForVisibilityOfElementLocatedBy(By.cssSelector(userType.getUserType())).click();
+        return this;
+    }
+
+    /**
+     * The method enterCredentialForNaturalPersonUser.
+     *
+     * @param personAccount the account.
+     * @return the main page.
+     */
+    public MainPage enterCredentialForNaturalPersonUser(final PersonAccount personAccount) {
         final WaitCondition waitCondition = new WaitCondition();
         waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).clear();
-        waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).sendKeys(account.getPhoneNumber());
-        waitCondition.waitForVisibilityOfElementLocatedBy(PASSWORD).clear();
-        waitCondition.waitForVisibilityOfElementLocatedBy(PASSWORD).sendKeys(account.getPassword());
-        waitCondition.waitForVisibilityOfElementLocatedBy(SUBMIT).click();
+        waitCondition.waitForVisibilityOfElementLocatedBy(PHONE).sendKeys(personAccount.getPhoneNumber());
+        waitCondition.waitForVisibilityOfElementLocatedBy(PERSON_PASSWORD).clear();
+        waitCondition.waitForVisibilityOfElementLocatedBy(PERSON_PASSWORD).sendKeys(personAccount.getPassword());
+        waitCondition.waitForVisibilityOfElementLocatedBy(SUBMIT_PERSON).click();
+        return this;
+    }
 
+    /**
+     * The method enterCredentialForLegalEntityUser.
+     *
+     * @return the main page
+     */
+    public MainPage enterCredentialForLegalEntityUser(final LegalAccount legalAccount) {
+        final WaitCondition waitCondition = new WaitCondition();
+        waitCondition.waitForVisibilityOfElementLocatedBy(EMAIL).clear();
+        waitCondition.waitForVisibilityOfElementLocatedBy(EMAIL).sendKeys(legalAccount.getEmail());
+        waitCondition.waitForVisibilityOfElementLocatedBy(LEGAL_PASSWORD).clear();
+        waitCondition.waitForVisibilityOfElementLocatedBy(LEGAL_PASSWORD).sendKeys(legalAccount.getPassword());
+        waitCondition.waitForVisibilityOfElementLocatedBy(SUBMIT_LEGAL).click();
         return this;
     }
 
@@ -175,16 +228,29 @@ public class MainPage extends AbstractPages {
     }
 
     /**
-     * The method checkErrorMessage.
+     * The method checkErrorMessageForPerson.
      *
      * @return the main page.
      */
-    public MainPage checkErrorMessage() {
+    public MainPage checkErrorMessageForPerson() {
         final WaitCondition waitCondition = new WaitCondition();
         assertTrue(waitCondition.waitForVisibilityOfElementLocatedBy(ERROR_MESSAGE).getText().contains(ERROR_TEXT));
 
         return this;
     }
+
+    /**
+     * The method checkErrorMessageForLegal.
+     *
+     * @return the main page.
+     */
+    public MainPage checkErrorMessageForLegal() {
+        final WaitCondition waitCondition = new WaitCondition();
+        assertTrue(waitCondition.waitForVisibilityOfElementLocatedBy(ERROR_LEGAL_MESSAGE).getText().contains(ERROR_LEGAL_TEXT));
+
+        return this;
+    }
+
 
     /**
      * The method checkRegisterPage.

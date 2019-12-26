@@ -1,9 +1,9 @@
 package ru.dostavista.model;
 
 /**
- * The class UserLTD.
+ * The class LegalAccount.
  */
-public class UserLTD {
+public class LegalAccount {
 
     /**
      * The private value email.
@@ -18,12 +18,12 @@ public class UserLTD {
     /**
      * The constructor.
      *
-     * @param email    the email
-     * @param password the password
+     * @param userEmail    the email
+     * @param userPassword the password
      */
-    public UserLTD(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public LegalAccount(final String userEmail, final String userPassword) {
+        this.email = userEmail;
+        this.password = userPassword;
     }
 
     /**
