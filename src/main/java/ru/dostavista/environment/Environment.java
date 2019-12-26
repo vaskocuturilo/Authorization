@@ -20,6 +20,6 @@ public final class Environment {
      */
     public static boolean isCheckOperationSystem() {
         final String operationSystem = System.getProperty("os.name");
-        return (operationSystem.contains("nix") || operationSystem.contains("nux"));
+        return ("nix".contains(operationSystem) || "nux".contains(operationSystem));
     }
 }

@@ -2,7 +2,7 @@ package ru.dostavista.pages;
 
 import com.google.gson.Gson;
 import org.openqa.selenium.By;
-import ru.dostavista.model.UserData;
+import ru.dostavista.model.PersonRegisterData;
 import ru.dostavista.utils.PropertiesReader;
 import ru.dostavista.waiters.WaitCondition;
 
@@ -56,7 +56,7 @@ public class RegisterPage {
      * @return the main page.
      */
     public RegisterPage enterRegisterData(final String jsonFile) {
-        final UserData userData = getJsonData(jsonFile);
+        final PersonRegisterData userData = getJsonData(jsonFile);
         final WaitCondition waitCondition = new WaitCondition();
         waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).clear();
         waitCondition.waitForVisibilityOfElementLocatedBy(FIRST_NAME).sendKeys(userData.getFirstName());
@@ -90,11 +90,11 @@ public class RegisterPage {
      * @param jsonFileName path to file.
      * @return new Gson.
      */
-    private static UserData getJsonData(final String jsonFileName) {
+    protected static PersonRegisterData getJsonData(final String jsonFileName) {
 
         final String pathToFolder = PropertiesReader.getResourceAsString(format("user/%s.json", jsonFileName));
 
-        return new Gson().fromJson(pathToFolder, UserData.class);
+        return new Gson().fromJson(pathToFolder, PersonRegisterData.class);
     }
 
 }

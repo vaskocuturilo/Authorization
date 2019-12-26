@@ -46,7 +46,7 @@ public class AuthorizationTest extends BaseWeb {
                 .openLoginForm()
                 .selectTypeAction(UserAction.REGISTRATION)
                 .checkRegisterPage()
-                .enterRegisterData("DataForRegistration");
+                .enterRegisterData("PersonalDataRegistration");
     }
 
     @Test
@@ -58,7 +58,7 @@ public class AuthorizationTest extends BaseWeb {
                 .openLoginForm()
                 .selectTypeAction(UserAction.REGISTRATION)
                 .checkRegisterPage()
-                .enterRegisterData("DataForRegistration")
+                .enterRegisterData("PersonalDataRegistration")
                 .checkErrorMessage();
     }
 
@@ -72,6 +72,18 @@ public class AuthorizationTest extends BaseWeb {
                 .selectTypeUser(UserType.LEGAL_ENTITY)
                 .enterCredential(legalAccount)
                 .checkErrorMessage();
+    }
+
+    @Test(dataProvider = "invalidCredentialForLegal", dataProviderClass = ProvideData.class)
+    @Story("This is automation script for check that user can't authorization with invalid credential.")
+    public void testAuthorizationLegalEntityWithValidData(final LegalAccount legalAccount) {
+        new MainPage()
+                .navigateToUrl("url")
+                .checkTitlePage()
+                .openLoginForm()
+                .selectTypeUser(UserType.LEGAL_ENTITY)
+                .selectTypeAction(UserAction.REGISTRATION)
+                .enterRegisterData("LegalDataRegistration");
     }
 }
 

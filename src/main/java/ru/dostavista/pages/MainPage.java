@@ -81,6 +81,7 @@ public class MainPage extends AbstractPages {
     }
 
 
+
     /**
      * The method selectTypeUser.
      *
