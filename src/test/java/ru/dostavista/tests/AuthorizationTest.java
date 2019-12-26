@@ -20,8 +20,8 @@ public class AuthorizationTest extends BaseWeb {
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserAction.AUTHORIZATION)
-                .enterCredentialForNaturalPersonUser(account)
-                .enterToPersonalAccount()
+                .enterCredential(account)
+                .enterAccount()
                 .clickLogOut();
     }
 
@@ -33,8 +33,8 @@ public class AuthorizationTest extends BaseWeb {
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserAction.AUTHORIZATION)
-                .enterCredentialForNaturalPersonUser(account)
-                .checkErrorMessageForPerson();
+                .enterCredential(account)
+                .checkErrorMessage();
     }
 
     @Test
@@ -70,8 +70,8 @@ public class AuthorizationTest extends BaseWeb {
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeUser(UserType.LEGAL_ENTITY)
-                .enterCredentialForLegalEntityUser(legalAccount)
-                .checkErrorMessageForLegal();
+                .enterCredential(legalAccount)
+                .checkErrorMessage();
     }
 }
 

@@ -18,8 +18,8 @@ public class LegalAccount {
     /**
      * The constructor.
      *
-     * @param userEmail    the email
-     * @param userPassword the password
+     * @param userEmail    the email.
+     * @param userPassword the password.
      */
     public LegalAccount(final String userEmail, final String userPassword) {
         this.email = userEmail;
@@ -27,18 +27,18 @@ public class LegalAccount {
     }
 
     /**
-     * The getter.
+     * The getter getEmail.
      *
-     * @return the email
+     * @return the email.
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * The getter.
+     * The getter password.
      *
-     * @return the password
+     * @return the password.
      */
     public String getPassword() {
         return password;
