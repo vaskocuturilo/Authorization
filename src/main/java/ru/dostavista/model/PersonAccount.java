@@ -27,18 +27,18 @@ public class PersonAccount {
     }
 
     /**
-     * Gets first name.
+     * Getter getPhoneNumber.
      *
-     * @return the first name
+     * @return the phoneNumber.
      */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     /**
-     * Gets last name.
+     * Getter getPassword.
      *
-     * @return the last name
+     * @return the password.
      */
     public String getPassword() {
         return password;
