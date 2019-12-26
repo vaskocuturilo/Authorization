@@ -1,9 +1,9 @@
 package ru.dostavista.model;
 
 /**
- * The class Account.
+ * The class PersonAccount.
  */
-public class Account {
+public class PersonAccount {
 
     /**
      * The private value phoneNumber.
@@ -16,12 +16,12 @@ public class Account {
     private String password;
 
     /**
-     * Constructor Account.
+     * Constructor PersonAccount.
      *
      * @param firstName this is user phoneNumber.
      * @param lastName  this is  user password.
      */
-    public Account(final String firstName, final String lastName) {
+    public PersonAccount(final String firstName, final String lastName) {
         this.phoneNumber = firstName;
         this.password = lastName;
     }

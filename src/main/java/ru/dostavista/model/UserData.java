@@ -28,16 +28,16 @@ public class UserData {
     /**
      * The constructor.
      *
-     * @param firstName   the first name.
-     * @param password    the password.
-     * @param phoneNumber the phone number.
-     * @param smsCode         the checkCode.
+     * @param userFirstName   the first name.
+     * @param userPassword    the password.
+     * @param userPhoneNumber the phone number.
+     * @param privateCode         the checkCode.
      */
-    public UserData(final String firstName, final String password, final String phoneNumber, final String smsCode) {
-        this.firstName = firstName;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.checkCode = smsCode;
+    public UserData(final String userFirstName, final String userPassword, final String userPhoneNumber, final String privateCode) {
+        this.firstName = userFirstName;
+        this.password = userPassword;
+        this.phoneNumber = userPhoneNumber;
+        this.checkCode = privateCode;
     }
 
     /**

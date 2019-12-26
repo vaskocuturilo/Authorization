@@ -1,7 +1,8 @@
 package ru.dostavista.userdata;
 
 import org.testng.annotations.DataProvider;
-import ru.dostavista.model.Account;
+import ru.dostavista.model.LegalAccount;
+import ru.dostavista.model.PersonAccount;
 
 /**
  * The class Provide data.
@@ -13,12 +14,12 @@ public class ProvideData {
      *
      * @return the object [ ] [ ]
      */
-    @DataProvider(name = "invalidCredential")
-    public Object[][] invalidCredential() {
+    @DataProvider(name = "invalidCredentialForPerson")
+    public Object[][] invalidCredentialForPerson() {
         return new Object[][]{
-                new Object[]{new Account("999999999", "test1")},
-                new Object[]{new Account("834986348", "toost2")},
-                new Object[]{new Account("346346346", "taktak3")}};
+                new Object[]{new PersonAccount("999999999", "test1")},
+                new Object[]{new PersonAccount("834986348", "toost2")},
+                new Object[]{new PersonAccount("346346346", "taktak3")}};
     }
 
     /**
@@ -26,10 +27,21 @@ public class ProvideData {
      *
      * @return the object [ ] [ ]
      */
-    @DataProvider(name = "validCredential")
-    public Object[][] validCredential() {
+    @DataProvider(name = "validCredentialForPerson")
+    public Object[][] validCredentialForPerson() {
         return new Object[][]{
-                new Object[]{new Account("9992343788", "qwerty1234567890")}};
+                new Object[]{new PersonAccount("9992343788", "qwerty123456")}};
+    }
+
+    /**
+     * Method Valid credential object [ ] [ ].
+     *
+     * @return the object [ ] [ ]
+     */
+    @DataProvider(name = "invalidCredentialForLegal")
+    public Object[][] invalidCredentialForLegal() {
+        return new Object[][]{
+                new Object[]{new LegalAccount("testqatest@qa.team", "Qwerty123456")}};
     }
 
     /**
@@ -40,8 +52,9 @@ public class ProvideData {
     @DataProvider(name = "dataForApi")
     public Object[][] dataForApi() {
         return new Object[][]{
-                new Object[]{new Account("TestUser", "Qwerty123456")}};
+                new Object[]{new PersonAccount("TestUser", "Qwerty123456")}};
     }
+
 
 
 }
