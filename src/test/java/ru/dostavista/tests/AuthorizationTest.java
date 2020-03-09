@@ -10,13 +10,15 @@ import ru.dostavista.pages.UserAction;
 import ru.dostavista.pages.UserType;
 import ru.dostavista.userdata.ProvideData;
 
+import static ru.dostavista.webconfig.WebConfig.BASE_CONFIG;
+
 public class AuthorizationTest extends BaseWeb {
 
     @Test(dataProvider = "validCredentialForPerson", dataProviderClass = ProvideData.class)
     @Story("This is automation script for check that user can authorization with valid credential.")
     public void testAuthorizationWithValidData(PersonAccount account) {
         new MainPage()
-                .navigateToUrl("url")
+                .navigateToUrl(BASE_CONFIG.getWebUrl())
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserAction.AUTHORIZATION)
@@ -29,7 +31,7 @@ public class AuthorizationTest extends BaseWeb {
     @Story("This is automation script for check that user can't authorization with invalid credential.")
     public void testAuthorizationWithInvalidData(PersonAccount account) {
         new MainPage()
-                .navigateToUrl("url")
+                .navigateToUrl(BASE_CONFIG.getWebUrl())
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserAction.AUTHORIZATION)
@@ -41,7 +43,7 @@ public class AuthorizationTest extends BaseWeb {
     @Story("This is automation script for check that user can register with valid data.")
     public void testRegistrationWithValidData() {
         new MainPage()
-                .navigateToUrl("url")
+                .navigateToUrl(BASE_CONFIG.getWebUrl())
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserAction.REGISTRATION)
@@ -53,7 +55,7 @@ public class AuthorizationTest extends BaseWeb {
     @Story("This is automation script for check that user can't register with invalid data.")
     public void testRegistrationWithInvalidData() {
         new MainPage()
-                .navigateToUrl("url")
+                .navigateToUrl(BASE_CONFIG.getWebUrl())
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeAction(UserAction.REGISTRATION)
@@ -66,7 +68,7 @@ public class AuthorizationTest extends BaseWeb {
     @Story("This is automation script for check that user can't authorization with invalid credential.")
     public void testAuthorizationLegalEntityWithInvalidData(final LegalAccount legalAccount) {
         new MainPage()
-                .navigateToUrl("url")
+                .navigateToUrl(BASE_CONFIG.getWebUrl())
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeUser(UserType.LEGAL_ENTITY)
@@ -78,7 +80,7 @@ public class AuthorizationTest extends BaseWeb {
     @Story("This is automation script for check that user can't authorization with invalid credential.")
     public void testAuthorizationLegalEntityWithValidData(final LegalAccount legalAccount) {
         new MainPage()
-                .navigateToUrl("url")
+                .navigateToUrl(BASE_CONFIG.getWebUrl())
                 .checkTitlePage()
                 .openLoginForm()
                 .selectTypeUser(UserType.LEGAL_ENTITY)

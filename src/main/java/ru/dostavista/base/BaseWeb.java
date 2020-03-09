@@ -12,23 +12,23 @@ import static ru.dostavista.browsers.Browser.selectBrowser;
  */
 public class BaseWeb {
 
-    /**
-     * Method beforeTest.
-     */
-    @BeforeClass(alwaysRun = true)
-    public void beforeTest() {
-        if (Environment.isCheckOperationSystem()) {
-            selectBrowser("Remote");
-        } else {
-            selectBrowser("Chrome");
+        /**
+         * Method beforeTest.
+         */
+        @BeforeClass(alwaysRun = true)
+        public void beforeTest () {
+            if (Environment.isCheckOperationSystem()) {
+                selectBrowser("Remote");
+            } else {
+                selectBrowser("Chrome");
+            }
+        }
+
+        /**
+         * Method afterTest.
+         */
+        @AfterClass(alwaysRun = true)
+        public void afterTest () {
+            AbstractPages.closeWebBrowser();
         }
     }
-
-    /**
-     * Method afterTest.
-     */
-    @AfterClass(alwaysRun = true)
-    public void afterTest() {
-        AbstractPages.closeWebBrowser();
-    }
-}

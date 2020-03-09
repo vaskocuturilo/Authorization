@@ -3,7 +3,7 @@
 <suite name="User interface" >
 <test name="ALL TESTS">
     <classes>
-        <class name="ru.dostavista.tests.AuthorizationTest"/>
+        <class name="ru.dostavista.tests.ApiTest"/>
     </classes>
 </test>
 </suite>
